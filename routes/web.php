@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', "DashboardController@view");
+// Route::get('/', "DashboardController@tambah");
+// Route::post('/', "DashboardController@store");
+// Route::get('/', "DashboardController@edit");
+// Route::post('/', "DashboardController@update");
+// Route::get('/', "DashboardController@hapus");
+// Route::get('/', "DashboardController@detail");
+
+
+// Route::get('/', function () {
+//     return view('index');
+// });
