@@ -14,4 +14,19 @@ class ProductController extends Controller
 
     	return view('products', compact('data', 'name'))
     }
+
+    public function store(Request $request){
+    		
+
+    		// dd($request->all());
+
+
+    		$product = new Product()
+    		$product->name = $request->name;
+    		$product->category = $request->category;
+    		$product->save();
+
+    		return redirect('products')
+
+    }
 }

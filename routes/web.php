@@ -11,15 +11,22 @@
 |
 */
 
-Route::get('/', "DashboardController@view");
-// Route::get('/', "DashboardController@tambah");
-// Route::post('/', "DashboardController@store");
-// Route::get('/', "DashboardController@edit");
-// Route::post('/', "DashboardController@update");
-// Route::get('/', "DashboardController@hapus");
-// Route::get('/', "DashboardController@detail");
-
+Route::get('/', "MahasiswaController@index");
+Route::get('/create', "MahasiswaController@create");
+Route::get('/{mahasiswa}', "MahasiswaController@show");
+Route::post('/', "MahasiswaController@store");
+Route::delete('/{mahasiswa}', "MahasiswaController@destroy");
+Route::get('/edit/{mahasiswa}', "MahasiswaController@edit");
+Route::patch('/{mahasiswa}', "MahasiswaController@update");
 
 // Route::get('/', function () {
 //     return view('index');
+// });
+
+// Route::get('/', function () {	
+//     return view('index2');
+// });
+
+// Route::get('/about', function () {
+//     return view('about');
 // });
