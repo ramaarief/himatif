@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Feb 2020 pada 23.27
+-- Waktu pembuatan: 08 Feb 2020 pada 19.51
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -32,7 +32,7 @@ CREATE TABLE `anggota` (
   `id` int(2) NOT NULL,
   `NIM` int(16) NOT NULL,
   `Nama` varchar(50) NOT NULL,
-  `Tahun_Angkatan` int(5) NOT NULL,
+  `Tahun_Angkatan` int(4) NOT NULL,
   `Alamat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,26 +41,40 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`id`, `NIM`, `Nama`, `Tahun_Angkatan`, `Alamat`) VALUES
-(1, 1831, 'Budi Susanto Fari', 2017, 'Malang'),
+(1, 1831, 'Budi Susanto Fari', 2016, 'Medan'),
 (2, 1832, 'Soni Goviono D', 2018, 'Surabaya'),
 (3, 1833, 'Sini De Andre', 2017, 'Bogor'),
 (4, 1834, 'Santi Santika', 2019, 'Malang'),
-(5, 1835, 'Reza Bahardian', 2018, 'Semarang');
+(5, 1835, 'Reza Bahardian', 2018, 'Semarang'),
+(6, 1836, 'Rama Arief Permana', 2018, 'Banyuwangi');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Struktur dari tabel `member`
 --
 
-CREATE TABLE `failed_jobs` (
+CREATE TABLE `member` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `NIM` char(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Nama` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Tahun_Angkatan` char(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Alamat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `member`
+--
+
+INSERT INTO `member` (`id`, `NIM`, `Nama`, `Tahun_Angkatan`, `Alamat`, `Photo`, `created_at`, `updated_at`) VALUES
+(1, '183140714111036', 'Rama Arief Permana', '2016', 'Banyuwangi', 'member6.png', NULL, NULL),
+(2, '183140714111036', 'Budi Susanto Fari', '2018', 'Surabaya', 'member4.png', '2020-02-08 18:02:52', NULL),
+(3, '183140714111032', 'Susi Susanti', '2018', 'Bogor', 'member3.png', NULL, NULL),
+(4, '183140714111033', 'Hanin Fairuz', '2017', 'Cibinong', 'member2.png', NULL, NULL),
+(5, '183140714111034', 'Bruno Fernandez Muroil', '2018', 'Papua', 'member5.png', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -79,10 +93,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2020_02_01_083044_himpunan', 1);
+(4, '2020_02_01_083044_himpunan', 1),
+(11, '2014_10_12_000000_create_users_table', 2),
+(12, '2014_10_12_100000_create_password_resets_table', 2),
+(13, '2020_02_07_014303_create_member_table', 2),
+(14, '2020_02_08_093349_create_psdm_table', 3),
+(15, '2020_02_08_174055_create_proker_table', 4);
 
 -- --------------------------------------------------------
 
@@ -95,6 +112,33 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `proker`
+--
+
+CREATE TABLE `proker` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `Proker` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Tanggal_Pelaksanaan` date NOT NULL,
+  `Tempat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Kapel` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `proker`
+--
+
+INSERT INTO `proker` (`id`, `Proker`, `Tanggal_Pelaksanaan`, `Tempat`, `Kapel`, `created_at`, `updated_at`) VALUES
+(1, 'First Gate Maba TI 2020', '2019-08-15', 'Ayam Cakper', 'Rama Arief Permana', '2020-02-08 17:46:34', NULL),
+(2, 'Bakti Sosial ', '2020-01-21', 'Pasar Besar', 'Budi Susanto Fari', '2020-02-08 18:22:24', NULL),
+(3, 'Sambut Wisuda', '2019-12-23', 'Gor Pertamina', 'Susi Susanti', '2020-02-08 18:24:10', NULL),
+(4, 'Fun Futsal', '2020-02-03', 'SM Futsal Malang', 'Hanin Fairuz', '2020-02-08 18:24:10', NULL),
+(5, 'Makrab TI 2020', '2019-10-15', 'Villa Batu', 'Bruno Fernandez Muroil	', '2020-02-08 18:24:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -124,9 +168,9 @@ ALTER TABLE `anggota`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indeks untuk tabel `member`
 --
-ALTER TABLE `failed_jobs`
+ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -140,6 +184,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indeks untuk tabel `proker`
+--
+ALTER TABLE `proker`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `users`
@@ -159,16 +209,22 @@ ALTER TABLE `anggota`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `member`
 --
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `member`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `proker`
+--
+ALTER TABLE `proker`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
