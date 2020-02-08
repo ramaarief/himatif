@@ -23,6 +23,7 @@
 					<td>Nama</td>
 					<td>Tahun Angkatan</td>
 					<td>Alamat</td>
+					<td>Photo</td>
 					<td>Aksi</td>
 				</tr>
 				</thead>
@@ -32,6 +33,7 @@
 					<td>{{ $mahasiswa->Nama }}</td>
 					<td>{{ $mahasiswa->Tahun_Angkatan }}</td>
 					<td>{{ $mahasiswa->Alamat }}</td>
+					<td><img src="{{ asset('images/'.$mahasiswa->Photo) }}" id="showgambar" style="max-width:200px;max-height:200px;" /></td>
 					<td>
 						<a href="/edit/{{ $mahasiswa->id }}" class="btn btn-primary" style="color: #fff; width: 70px;">Edit</a>
 						<form action="{{ $mahasiswa->id }}" method="post" class="d-inline">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
-    protected $table = 'anggota';
-    protected $fillable = ['NIM', 'Nama', 'Tahun_Angkatan', 'Alamat'];
+    protected $table = 'member';
+    protected $fillable = ['NIM', 'Nama', 'Tahun_Angkatan', 'Alamat', 'Photo'];
     public $timestamps = false;
 }

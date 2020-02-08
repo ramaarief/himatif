@@ -12,12 +12,16 @@
 */
 
 Route::get('/', "MahasiswaController@index");
+Route::get('/proker', "ProkerController@index");
 Route::get('/create', "MahasiswaController@create");
 Route::get('/{mahasiswa}', "MahasiswaController@show");
 Route::post('/', "MahasiswaController@store");
 Route::delete('/{mahasiswa}', "MahasiswaController@destroy");
+Route::delete('/proker/{proker}', "ProkerController@destroy");
 Route::get('/edit/{mahasiswa}', "MahasiswaController@edit");
 Route::patch('/{mahasiswa}', "MahasiswaController@update");
+
+
 
 // Route::get('/', function () {
 //     return view('index');

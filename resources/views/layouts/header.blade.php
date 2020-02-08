@@ -5,6 +5,7 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="index.php">Home</a></li>
+				<li><a href="/proker">Proker</a></li>
 				<li><a href="#" class="button">Sign Up</a></li>
 			</ul>
 		</nav>

@@ -15,8 +15,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = DB::table('anggota')->get();
-        // $mahasiswa = Mahasiswa::all();
+        // $mahasiswa = DB::table('anggota')->get();
+        
+        $mahasiswa = Mahasiswa::all();
         return view('index',['anggota' => $mahasiswa]);
 
         // return Mahasiswa::all();
@@ -40,20 +41,27 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        // $mahasiswa = new Mahasiswa;
-        // $mahasiswa->NIM = $request->NIM;
-        // $mahasiswa->Nama = $request->Nama;
-        // $mahasiswa->Tahun_Angkatan = $request->Tahun_Angkatan;
-        // $mahasiswa->Alamat = $request->Alamat;
+        $mahasiswa = new Mahasiswa;
+        $mahasiswa->NIM = $request->nim;
+        $mahasiswa->Nama = $request->nama;
+        $mahasiswa->Tahun_Angkatan = $request->tahun;
+        $mahasiswa->Alamat = $request->alamat;
 
-        // $mahasiswa->save();
+        $file       = $request->file('photo');
+        $fileName   = $file->getClientOriginalName();
+        $request->file('photo')->move("images/", $fileName);
 
-        DB::table('anggota')->insert([
-            'NIM' => $request->nim,
-            'Nama' => $request->nama,
-            'Tahun_Angkatan' => $request->tahun,
-            'Alamat' => $request->alamat
-        ]);
+        $mahasiswa->Photo = $fileName;
+
+
+        $mahasiswa->save();
+
+        // DB::table('anggota')->insert([
+        //     'NIM' => $request->nim,
+        //     'Nama' => $request->nama,
+        //     'Tahun_Angkatan' => $request->tahun,
+        //     'Alamat' => $request->alamat
+        // ]);
 
         // $request->validate([
         //     'NIM' => 'required',
@@ -99,13 +107,71 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        Mahasiswa::where('id', $mahasiswa->id)
-            ->update([
-                'NIM' => $request->nim,
-                'Nama' => $request->nama,
-                'Tahun_Angkatan' => $request->tahun,
-                'Alamat' => $request->alamat
-            ]);
+        $mahasiswa = Mahasiswa::where('id', $mahasiswa->id)->first();
+        $mahasiswa->NIM = $request['nim'];
+        $mahasiswa->Nama = $request['nama'];
+        $mahasiswa->Tahun_Angkatan = $request['tahun'];
+        $mahasiswa->Alamat = $request['alamat'];
+
+        if($request->file('photo') == "")
+        {
+            $mahasiswa->Photo = $mahasiswa->Photo;
+        } 
+        else
+        {
+            $file       = $request->file('photo');
+            $fileName   = $file->getClientOriginalName();
+            $request->file('photo')->move("images/", $fileName);
+            $mahasiswa->Photo = $fileName;
+        }
+        
+        $mahasiswa->update();
+
+        // if($request->file('photo') == "")
+        //         {
+        //             $mahasiswa->photo = $mahasiswa->photo;
+        //         } 
+        //         else
+        //         {
+        //             $file       = $request->file('photo');
+        //             $fileName   = $file->getClientOriginalName();
+        //             $request->file('photo')->move("images/", $fileName);
+        //             $mahasiswa->photo = $fileName;
+        //         }
+
+        // Mahasiswa::where('id', $mahasiswa->id)
+        //     ->update([
+        //         'NIM' => $request->nim,
+        //         'Nama' => $request->nama,
+        //         'Tahun_Angkatan' => $request->tahun,
+        //         'Alamat' => $request->alamat,
+        //         'Photo' => $request->photo
+
+        //     ]);
+
+                
+
+        // $mahasiswa = new Mahasiswa;
+        // $mahasiswa->NIM = $request->nim;
+        // $mahasiswa->Nama = $request->nama;
+        // $mahasiswa->Tahun_Angkatan = $request->tahun;
+        // $mahasiswa->Alamat = $request->alamat;
+
+        // if($request->file('photo') == "")
+        //         {
+        //             $mahasiswa->photo = $mahasiswa->photo;
+        //         } 
+        //         else
+        //         {
+        //             $file       = $request->file('photo');
+        //             $fileName   = $file->getClientOriginalName();
+        //             $request->file('photo')->move("images/", $fileName);
+        //             $mahasiswa->Photo = $fileName;
+        //         }
+
+
+        // $mahasiswa->update();
+
         return redirect('/');
     }
 
