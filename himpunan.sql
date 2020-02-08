@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Feb 2020 pada 19.51
+-- Waktu pembuatan: 08 Feb 2020 pada 20.43
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -71,7 +71,7 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`id`, `NIM`, `Nama`, `Tahun_Angkatan`, `Alamat`, `Photo`, `created_at`, `updated_at`) VALUES
 (1, '183140714111036', 'Rama Arief Permana', '2016', 'Banyuwangi', 'member6.png', NULL, NULL),
-(2, '183140714111036', 'Budi Susanto Fari', '2018', 'Surabaya', 'member4.png', '2020-02-08 18:02:52', NULL),
+(2, '183140714111031', 'Budi Susanto Fari', '2018', 'Surabaya', 'member4.png', '2020-02-08 18:02:52', NULL),
 (3, '183140714111032', 'Susi Susanti', '2018', 'Bogor', 'member3.png', NULL, NULL),
 (4, '183140714111033', 'Hanin Fairuz', '2017', 'Cibinong', 'member2.png', NULL, NULL),
 (5, '183140714111034', 'Bruno Fernandez Muroil', '2018', 'Papua', 'member5.png', NULL, NULL);
@@ -99,7 +99,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2014_10_12_100000_create_password_resets_table', 2),
 (13, '2020_02_07_014303_create_member_table', 2),
 (14, '2020_02_08_093349_create_psdm_table', 3),
-(15, '2020_02_08_174055_create_proker_table', 4);
+(17, '2020_02_08_174055_create_proker_table', 4);
 
 -- --------------------------------------------------------
 
@@ -134,11 +134,11 @@ CREATE TABLE `proker` (
 --
 
 INSERT INTO `proker` (`id`, `Proker`, `Tanggal_Pelaksanaan`, `Tempat`, `Kapel`, `created_at`, `updated_at`) VALUES
-(1, 'First Gate Maba TI 2020', '2019-08-15', 'Ayam Cakper', 'Rama Arief Permana', '2020-02-08 17:46:34', NULL),
-(2, 'Bakti Sosial ', '2020-01-21', 'Pasar Besar', 'Budi Susanto Fari', '2020-02-08 18:22:24', NULL),
-(3, 'Sambut Wisuda', '2019-12-23', 'Gor Pertamina', 'Susi Susanti', '2020-02-08 18:24:10', NULL),
-(4, 'Fun Futsal', '2020-02-03', 'SM Futsal Malang', 'Hanin Fairuz', '2020-02-08 18:24:10', NULL),
-(5, 'Makrab TI 2020', '2019-10-15', 'Villa Batu', 'Bruno Fernandez Muroil	', '2020-02-08 18:24:10', NULL);
+(1, 'First Gathering Maba TI', '2019-09-18', 'Ayam Goreng Cak Per', 'Rama Arief Permana', '2020-02-08 19:40:39', NULL),
+(2, 'Bakti Sosial Himatif', '2020-01-28', 'Pasar Besar ', 'Budi Susanto Fari', '2020-02-08 19:40:39', NULL),
+(3, 'Sambut Wisuda TI', '2019-11-14', 'Gor Pertamina', 'Susi Susanti', '2020-02-08 19:40:39', NULL),
+(4, 'Fun Futsal TI', '2020-02-02', 'SM Futsal Malang', 'Hanin Fairuz', '2020-02-08 19:40:39', NULL),
+(5, 'Makrab TI 2019', '2019-11-05', 'Villa Batu', 'Bruno Fernandez Muroil', '2020-02-08 19:40:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -212,25 +212,35 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `proker`
 --
 ALTER TABLE `proker`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `proker`
+--
+ALTER TABLE `proker`
+  ADD CONSTRAINT `proker_id_foreign` FOREIGN KEY (`id`) REFERENCES `member` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
