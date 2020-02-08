@@ -19,6 +19,7 @@ class CreateProkerTable extends Migration
             $table->date('Tanggal_Pelaksanaan');
             $table->string('Tempat', 50);
             $table->string('Kapel', 50);
+            $table->foreign('id')->references('id')->on('member');
             $table->timestamps();
         });
     }
