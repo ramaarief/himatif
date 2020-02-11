@@ -13,11 +13,16 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $mahasiswa = DB::table('anggota')->get();
+        $mahasiswa = Mahasiswa::all()->paginate(5);
+
+        // $mahasiswa = DB::table('member')->paginate(5);
         
-        $mahasiswa = Mahasiswa::all();
+        // $mahasiswa = Mahasiswa::when($request->search, function($query) use($request){
+        //     $query->where('Nama', 'LIKE', '%'.$request->search.'%');
+        // });
+        // $mahasiswa = Mahasiswa::select('NIM', 'Nama', 'Tahun_Angkatan', 'Alamat', 'Photo')->paginate(10);
         return view('index',['anggota' => $mahasiswa]);
 
         // return Mahasiswa::all();
@@ -41,17 +46,21 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $photoName = 'products-'.date('Ymdhis').'.'.$request->photo->getClientOriginalExtension();
+        $request->photo->move('images', $photoName);
+
         $mahasiswa = new Mahasiswa;
         $mahasiswa->NIM = $request->nim;
         $mahasiswa->Nama = $request->nama;
         $mahasiswa->Tahun_Angkatan = $request->tahun;
         $mahasiswa->Alamat = $request->alamat;
 
-        $file       = $request->file('photo');
-        $fileName   = $file->getClientOriginalName();
-        $request->file('photo')->move("images/", $fileName);
+        // $file       = $request->file('photo');
+        // $fileName   = $file->getClientOriginalName();
+        // $request->file('photo')->move("images/", $fileName);
 
-        $mahasiswa->Photo = $fileName;
+        $mahasiswa->Photo = $photoName;
 
 
         $mahasiswa->save();
@@ -113,17 +122,23 @@ class MahasiswaController extends Controller
         $mahasiswa->Tahun_Angkatan = $request['tahun'];
         $mahasiswa->Alamat = $request['alamat'];
 
-        if($request->file('photo') == "")
-        {
-            $mahasiswa->Photo = $mahasiswa->Photo;
-        } 
-        else
-        {
-            $file       = $request->file('photo');
-            $fileName   = $file->getClientOriginalName();
-            $request->file('photo')->move("images/", $fileName);
-            $mahasiswa->Photo = $fileName;
+        if( $request->photo){
+            $photoName = 'products-'.date('Ymdhis').'.'.$request->photo->getClientOriginalExtension();
+            $request->photo->move('images', $photoName);
+            $mahasiswa->Photo = $photoName;
         }
+
+        // if($request->file('photo') == "")
+        // {
+        //     $mahasiswa->Photo = $mahasiswa->Photo;
+        // } 
+        // else
+        // {
+        //     $file       = $request->file('photo');
+        //     $fileName   = $file->getClientOriginalName();
+        //     $request->file('photo')->move("images/", $fileName);
+        //     $mahasiswa->Photo = $fileName;
+        // }
         
         $mahasiswa->update();
 
@@ -185,5 +200,29 @@ class MahasiswaController extends Controller
     {
         Mahasiswa::destroy($mahasiswa->id);
         return redirect('/');
+    }
+
+    public function cari(Request $request)
+    {
+
+        $mahasiswa = Mahasiswa::when($request->search, function ($query) use ($request) {
+                $query->where('NIM', 'LIKE', "%{$request->search}%")
+                      ->orWhere('Nama', 'LIKE', "%{$request->search}%");
+                })->paginate(5);
+        return view('index',['anggota' => $mahasiswa]);
+
+      // return view('/members')->with('member', ($search));
+
+        // // menangkap data pencarian
+        // $cari = $request->cari;
+ 
+        //     // mengambil data dari table pegawai sesuai pencarian data
+        // $mahasiswa = DB::table('member')
+        // ->where('Nama','like',"%".$cari."%")
+        // ->paginate(5);
+ 
+        //     // mengirim data pegawai ke view index
+        // return view('index',['anggota' => $mahasiswa]);
+ 
     }
 }

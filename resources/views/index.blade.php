@@ -16,6 +16,11 @@
 			<br>
 			<br>
 
+			<form method="get" action="/" class="form-inline my-2 my-lg-0">
+				<input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+
 			<table>
 				<thead class="thead-light">
 				<tr>
@@ -45,6 +50,17 @@
 				</tr>
 				@endforeach
 			</table>
+			
+
+			<div class="card-footer text-right">
+            <nav class="d-inline-block">
+             	Halaman : {{ $anggota->currentPage() }} <br/>
+				Jumlah Data : {{ $anggota->total() }} <br/>
+				Data Per Halaman : {{ $anggota->perPage() }} <br/>
+			 
+				{{ $anggota->links() }}
+            </nav>
+          </div>
 		</section>
 
 		<br>
