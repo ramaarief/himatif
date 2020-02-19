@@ -4,7 +4,7 @@
 use App\Mahasiswa;
 use Faker\Generator as Faker;
 
-$factory->define(App\Mahasiswa::class, function (Faker $faker) {
+$factory->define(Mahasiswa::class, function (Faker $faker) {
     return [
         'NIM' => $faker->nim,
 		'Nama' => $faker->nama,

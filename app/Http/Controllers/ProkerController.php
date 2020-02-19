@@ -16,7 +16,7 @@ class ProkerController extends Controller
     public function index()
     {
         $proker = Proker::all();
-        return view('proker',['mahasiswa' => $proker]);
+        return view('proker',['mhs' => $proker]);
     }
 
     /**

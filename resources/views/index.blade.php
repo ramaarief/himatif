@@ -54,10 +54,7 @@
 
 			<div class="card-footer text-right">
             <nav class="d-inline-block">
-             	Halaman : {{ $anggota->currentPage() }} <br/>
-				Jumlah Data : {{ $anggota->total() }} <br/>
-				Data Per Halaman : {{ $anggota->perPage() }} <br/>
-			 
+            	Page Number<br>
 				{{ $anggota->links() }}
             </nav>
           </div>

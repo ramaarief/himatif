@@ -22,12 +22,12 @@
 					<td>Aksi</td>
 				</tr>
 				</thead>
-				@foreach($mahasiswa as $proker)
+				@foreach($mhs as $proker)
 				<tr>
 					<td>{{ $proker->Proker }}</td>
 					<td>{{ $proker->Tanggal_Pelaksanaan }}</td>
 					<td>{{ $proker->Tempat }}</td>
-					<td>{{ $proker->Kapel }}</td>
+					<td>{{ $proker->mahasiswa->Nama }}</td>
 					<td>
 						<form action="/proker/{{ $proker->id }}" method="post" class="d-inline">
 							@method('delete')

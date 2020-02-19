@@ -18,10 +18,10 @@ class CreateProkerTable extends Migration
             $table->string('Proker', 70);
             $table->date('Tanggal_Pelaksanaan');
             $table->string('Tempat', 50);
-            $table->string('Kapel', 50);
+            $table->bigInteger('kapel_id')->unsigned()->nullable();;
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('member')->onDelete('cascade');
+            $table->foreign('kapel_id')->references('id')->on('member')->onDelete('cascade');
         });
     }
 
