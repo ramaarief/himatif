@@ -15,7 +15,12 @@ class MahasiswaController extends Controller
      */
     public function index(Request $request)
     {
-        $mahasiswa = Mahasiswa::all()->paginate(5);
+        // $mahasiswa = Mahasiswa::all()->paginate(5);
+
+         $mahasiswa = Mahasiswa::when($request->search, function ($query) use ($request) {
+                $query->where('NIM', 'LIKE', "%{$request->search}%")
+                      ->orWhere('Nama', 'LIKE', "%{$request->search}%");
+                })->paginate(5);
 
         // $mahasiswa = DB::table('member')->paginate(5);
         
@@ -202,27 +207,4 @@ class MahasiswaController extends Controller
         return redirect('/');
     }
 
-    public function cari(Request $request)
-    {
-
-        $mahasiswa = Mahasiswa::when($request->search, function ($query) use ($request) {
-                $query->where('NIM', 'LIKE', "%{$request->search}%")
-                      ->orWhere('Nama', 'LIKE', "%{$request->search}%");
-                })->paginate(5);
-        return view('index',['anggota' => $mahasiswa]);
-
-      // return view('/members')->with('member', ($search));
-
-        // // menangkap data pencarian
-        // $cari = $request->cari;
- 
-        //     // mengambil data dari table pegawai sesuai pencarian data
-        // $mahasiswa = DB::table('member')
-        // ->where('Nama','like',"%".$cari."%")
-        // ->paginate(5);
- 
-        //     // mengirim data pegawai ke view index
-        // return view('index',['anggota' => $mahasiswa]);
- 
-    }
 }

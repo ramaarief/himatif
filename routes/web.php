@@ -17,7 +17,6 @@ Route::get('/logout', "AuthController@logout");
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/', "MahasiswaController@index");
-	Route::get('/', "MahasiswaController@cari");
 	Route::get('/proker', "ProkerController@index");
 	Route::get('/create', "MahasiswaController@create");
 	Route::get('/{mahasiswa}', "MahasiswaController@show");
