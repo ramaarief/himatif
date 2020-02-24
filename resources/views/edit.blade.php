@@ -21,7 +21,7 @@
 
 @stop
 
-@extends('layouts/main')
+@extends('admin/main')
 @section('container')
 
 	<!-- Main -->
@@ -33,7 +33,7 @@
 				<p>Tahun periode 2019/2020</p>
 			</header>
 			
-			<form method="post" action="/{{ $mahasiswa->id }}" enctype="multipart/form-data">
+			<form method="post" action="/admin/{{ $mahasiswa->id }}" enctype="multipart/form-data">
 				@method('patch')
 				@csrf
 			  <div class="form-group">

@@ -15,16 +15,20 @@ Route::get('/login', "AuthController@index")->name('login');
 Route::post('/postlogin', "AuthController@login");
 Route::get('/logout', "AuthController@logout");
 
+Route::get('/index', "MahasiswaController@index");
+Route::get('/proker', "ProkerController@index");
+
 Route::group(['middleware' => 'auth'], function(){
-	Route::get('/', "MahasiswaController@index");
-	Route::get('/proker', "ProkerController@index");
-	Route::get('/create', "MahasiswaController@create");
-	Route::get('/{mahasiswa}', "MahasiswaController@show");
-	Route::post('/', "MahasiswaController@store");
-	Route::delete('/{mahasiswa}', "MahasiswaController@destroy");
-	Route::delete('/proker/{proker}', "ProkerController@destroy");
-	Route::get('/edit/{mahasiswa}', "MahasiswaController@edit");
-	Route::patch('/{mahasiswa}', "MahasiswaController@update");
+	Route::get('/', "AdminMahasiswaController@index");
+	Route::get('/admin', "AdminMahasiswaController@index");
+	Route::get('/admin_proker', "AdminProkerController@index");
+	Route::get('/create', "AdminMahasiswaController@create");
+	Route::get('/admin/{mahasiswa}', "AdminMahasiswaController@show");
+	Route::post('/admin', "AdminMahasiswaController@store");
+	Route::delete('/admin/{mahasiswa}', "AdminMahasiswaController@destroy");
+	Route::delete('/admin_proker/{proker}', "AdminProkerController@destroy");
+	Route::get('/edit/{mahasiswa}', "AdminMahasiswaController@edit");
+	Route::patch('/admin/{mahasiswa}', "AdminMahasiswaController@update");
 });
 
 

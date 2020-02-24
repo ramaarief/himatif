@@ -11,15 +11,14 @@
 
 			<br>
 
-			<a href="/create" class="btn btn-primary" style="color: #fff;">(+) Tambah Data Anggota</a>
-
-			<br>
-			<br>
-
-			<form method="get" action="/" class="form-inline my-2 my-lg-0">
+			<div style="margin-left: 410px;">
+			<form method="get" action="/index" class="form-inline my-2 my-lg-0">
 				<input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
+			</div>
+
+			<br>
 
 			<table>
 				<thead class="thead-light">
@@ -29,7 +28,6 @@
 					<td>Tahun Angkatan</td>
 					<td>Alamat</td>
 					<td>Photo</td>
-					<td>Aksi</td>
 				</tr>
 				</thead>
 				@foreach($mahasiswa as $mhs)
@@ -39,14 +37,6 @@
 					<td>{{ $mhs->Tahun_Angkatan }}</td>
 					<td>{{ $mhs->Alamat }}</td>
 					<td><img src="{{ asset('images/'.$mhs->Photo) }}" id="showgambar" style="max-width:200px;max-height:200px;" /></td>
-					<td>
-						<a href="/edit/{{ $mhs->id }}" class="btn btn-primary" style="color: #fff; width: 70px;">Edit</a>
-						<form action="{{ $mhs->id }}" method="post" class="d-inline">
-							@method('delete')
-							@csrf
-						<button type="submit" class="btn btn-danger">Delete</button>
-						</form>
-					</td>
 				</tr>
 				@endforeach
 			</table>

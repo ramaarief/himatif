@@ -19,7 +19,6 @@
 					<td>Tanggal Pelaksanaan</td>
 					<td>Tempat</td>
 					<td>Ketua Pelaksana</td>
-					<td>Aksi</td>
 				</tr>
 				</thead>
 				@foreach($proker as $p)
@@ -33,13 +32,6 @@
 									{{ $mhs->Nama }}
 							@endif
 						@endforeach
-					</td>
-					<td>
-						<form action="/proker/{{ $p->id }}" method="post" class="d-inline">
-							@method('delete')
-							@csrf
-						<button type="submit" class="btn btn-danger">Delete</button>
-						</form>
 					</td>
 				</tr>
 				@endforeach
