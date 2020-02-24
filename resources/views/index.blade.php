@@ -32,16 +32,16 @@
 					<td>Aksi</td>
 				</tr>
 				</thead>
-				@foreach($anggota as $mahasiswa)
+				@foreach($mahasiswa as $mhs)
 				<tr>
-					<td>{{ $mahasiswa->NIM }}</td>
-					<td>{{ $mahasiswa->Nama }}</td>
-					<td>{{ $mahasiswa->Tahun_Angkatan }}</td>
-					<td>{{ $mahasiswa->Alamat }}</td>
-					<td><img src="{{ asset('images/'.$mahasiswa->Photo) }}" id="showgambar" style="max-width:200px;max-height:200px;" /></td>
+					<td>{{ $mhs->NIM }}</td>
+					<td>{{ $mhs->Nama }}</td>
+					<td>{{ $mhs->Tahun_Angkatan }}</td>
+					<td>{{ $mhs->Alamat }}</td>
+					<td><img src="{{ asset('images/'.$mhs->Photo) }}" id="showgambar" style="max-width:200px;max-height:200px;" /></td>
 					<td>
-						<a href="/edit/{{ $mahasiswa->id }}" class="btn btn-primary" style="color: #fff; width: 70px;">Edit</a>
-						<form action="{{ $mahasiswa->id }}" method="post" class="d-inline">
+						<a href="/edit/{{ $mhs->id }}" class="btn btn-primary" style="color: #fff; width: 70px;">Edit</a>
+						<form action="{{ $mhs->id }}" method="post" class="d-inline">
 							@method('delete')
 							@csrf
 						<button type="submit" class="btn btn-danger">Delete</button>
@@ -55,7 +55,7 @@
 			<div class="card-footer text-right">
             <nav class="d-inline-block">
             	Page Number<br>
-				{{ $anggota->links() }}
+				{{ $mahasiswa->links() }}
             </nav>
           </div>
 		</section>

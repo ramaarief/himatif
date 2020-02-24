@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Proker;
 
 class Mahasiswa extends Model
 {
@@ -12,6 +13,6 @@ class Mahasiswa extends Model
 
    	public function proker()
     {
-        return $this->hasOne('App\Proker');
+        return $this->belongsTo('App\Proker', 'Nama', 'kapel_id');
     }
 }

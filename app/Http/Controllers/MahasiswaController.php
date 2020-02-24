@@ -28,7 +28,7 @@ class MahasiswaController extends Controller
         //     $query->where('Nama', 'LIKE', '%'.$request->search.'%');
         // });
         // $mahasiswa = Mahasiswa::select('NIM', 'Nama', 'Tahun_Angkatan', 'Alamat', 'Photo')->paginate(10);
-        return view('index',['anggota' => $mahasiswa]);
+        return view('index',['mahasiswa' => $mahasiswa]);
 
         // return Mahasiswa::all();
     }

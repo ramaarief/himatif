@@ -22,14 +22,20 @@
 					<td>Aksi</td>
 				</tr>
 				</thead>
-				@foreach($mhs as $proker)
+				@foreach($proker as $p)
 				<tr>
-					<td>{{ $proker->Proker }}</td>
-					<td>{{ $proker->Tanggal_Pelaksanaan }}</td>
-					<td>{{ $proker->Tempat }}</td>
-					<td>{{ $proker->mahasiswa->Nama }}</td>
+					<td>{{ $p->Proker }}</td>
+					<td>{{ $p->Tanggal_Pelaksanaan }}</td>
+					<td>{{ $p->Tempat }}</td>
 					<td>
-						<form action="/proker/{{ $proker->id }}" method="post" class="d-inline">
+						@foreach($mahasiswa as $mhs)
+							@if($p->kapel_id == $mhs->id)
+									{{ $mhs->Nama }}
+							@endif
+						@endforeach
+					</td>
+					<td>
+						<form action="/proker/{{ $p->id }}" method="post" class="d-inline">
 							@method('delete')
 							@csrf
 						<button type="submit" class="btn btn-danger">Delete</button>
