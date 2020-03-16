@@ -6,6 +6,12 @@ use App\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Exports\MahasiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+
+use PDF;
+
 class AdminMahasiswaController extends Controller
 {
     /**
@@ -15,22 +21,16 @@ class AdminMahasiswaController extends Controller
      */
     public function index(Request $request)
     {
-        // $mahasiswa = Mahasiswa::all()->paginate(5);
 
          $mahasiswa = Mahasiswa::when($request->search, function ($query) use ($request) {
                 $query->where('NIM', 'LIKE', "%{$request->search}%")
-                      ->orWhere('Nama', 'LIKE', "%{$request->search}%");
+                      ->orWhere('Nama', 'LIKE', "%{$request->search}%")
+                      ->orWhere('Tahun_Angkatan', 'LIKE', "%{$request->search}%")
+                      ->orWhere('Alamat', 'LIKE', "%{$request->search}%");;
                 })->paginate(5);
 
-        // $mahasiswa = DB::table('member')->paginate(5);
-        
-        // $mahasiswa = Mahasiswa::when($request->search, function($query) use($request){
-        //     $query->where('Nama', 'LIKE', '%'.$request->search.'%');
-        // });
-        // $mahasiswa = Mahasiswa::select('NIM', 'Nama', 'Tahun_Angkatan', 'Alamat', 'Photo')->paginate(10);
         return view('admin',['mahasiswa' => $mahasiswa]);
 
-        // return Mahasiswa::all();
     }
 
     /**
@@ -61,32 +61,11 @@ class AdminMahasiswaController extends Controller
         $mahasiswa->Tahun_Angkatan = $request->tahun;
         $mahasiswa->Alamat = $request->alamat;
 
-        // $file       = $request->file('photo');
-        // $fileName   = $file->getClientOriginalName();
-        // $request->file('photo')->move("images/", $fileName);
-
         $mahasiswa->Photo = $photoName;
-
 
         $mahasiswa->save();
 
-        // DB::table('anggota')->insert([
-        //     'NIM' => $request->nim,
-        //     'Nama' => $request->nama,
-        //     'Tahun_Angkatan' => $request->tahun,
-        //     'Alamat' => $request->alamat
-        // ]);
-
-        // $request->validate([
-        //     'NIM' => 'required',
-        //     'Nama' => 'required',
-        //     'Tahun_Angkatan' => 'required',
-        //     'Alamat' => 'required',
-        // ]);
-
-        // Mahasiswa::create($request->all());
-
-        return redirect('admin');
+        return redirect('/');
     }
 
     /**
@@ -108,7 +87,6 @@ class AdminMahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-
         return view('edit', compact('mahasiswa'));
     }
 
@@ -132,67 +110,10 @@ class AdminMahasiswaController extends Controller
             $request->photo->move('images', $photoName);
             $mahasiswa->Photo = $photoName;
         }
-
-        // if($request->file('photo') == "")
-        // {
-        //     $mahasiswa->Photo = $mahasiswa->Photo;
-        // } 
-        // else
-        // {
-        //     $file       = $request->file('photo');
-        //     $fileName   = $file->getClientOriginalName();
-        //     $request->file('photo')->move("images/", $fileName);
-        //     $mahasiswa->Photo = $fileName;
-        // }
         
         $mahasiswa->update();
 
-        // if($request->file('photo') == "")
-        //         {
-        //             $mahasiswa->photo = $mahasiswa->photo;
-        //         } 
-        //         else
-        //         {
-        //             $file       = $request->file('photo');
-        //             $fileName   = $file->getClientOriginalName();
-        //             $request->file('photo')->move("images/", $fileName);
-        //             $mahasiswa->photo = $fileName;
-        //         }
-
-        // Mahasiswa::where('id', $mahasiswa->id)
-        //     ->update([
-        //         'NIM' => $request->nim,
-        //         'Nama' => $request->nama,
-        //         'Tahun_Angkatan' => $request->tahun,
-        //         'Alamat' => $request->alamat,
-        //         'Photo' => $request->photo
-
-        //     ]);
-
-                
-
-        // $mahasiswa = new Mahasiswa;
-        // $mahasiswa->NIM = $request->nim;
-        // $mahasiswa->Nama = $request->nama;
-        // $mahasiswa->Tahun_Angkatan = $request->tahun;
-        // $mahasiswa->Alamat = $request->alamat;
-
-        // if($request->file('photo') == "")
-        //         {
-        //             $mahasiswa->photo = $mahasiswa->photo;
-        //         } 
-        //         else
-        //         {
-        //             $file       = $request->file('photo');
-        //             $fileName   = $file->getClientOriginalName();
-        //             $request->file('photo')->move("images/", $fileName);
-        //             $mahasiswa->Photo = $fileName;
-        //         }
-
-
-        // $mahasiswa->update();
-
-        return redirect('admin');
+        return redirect('/');
     }
 
     /**
@@ -204,6 +125,19 @@ class AdminMahasiswaController extends Controller
     public function destroy(Mahasiswa $mahasiswa)
     {
         Mahasiswa::destroy($mahasiswa->id);
-        return redirect('admin');
+        return redirect('/');
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
+    }
+
+    public function cetak_pdf()
+    {
+        $mahasiswa = Mahasiswa::all();
+ 
+        $pdf = PDF::loadview('exportPDF',['mahasiswa'=>$mahasiswa]);
+        return $pdf->download('laporan-mahasiswa-pdf');
     }
 }

@@ -39,7 +39,14 @@ class AdminProkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proker = new Proker;
+        $proker->Proker = $request->proker;
+        $proker->Tanggal_Pelaksanaan = $request->tanggal;
+        $proker->Tempat = $request->tempat;
+
+        $proker->save();
+
+        return redirect('/admin_proker');
     }
 
     /**
@@ -50,7 +57,7 @@ class AdminProkerController extends Controller
      */
     public function show(Proker $proker)
     {
-        //
+        return view('admin_proker');
     }
 
     /**
@@ -61,7 +68,7 @@ class AdminProkerController extends Controller
      */
     public function edit(Proker $proker)
     {
-        //
+        return view('editproker', compact('proker'));
     }
 
     /**
@@ -73,7 +80,14 @@ class AdminProkerController extends Controller
      */
     public function update(Request $request, Proker $proker)
     {
-        //
+        $proker = Proker::where('id', $proker->id)->first();
+        $proker->Proker = $request['proker'];
+        $proker->Tanggal_Pelaksanaan = $request['tanggal'];
+        $proker->Tempat = $request['tempat'];
+        
+        $proker->update();
+
+        return redirect('/admin_proker');
     }
 
     /**

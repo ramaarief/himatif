@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('asset_admin/plugins/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('asset_admin/plugins/images/logo.png') }}">
     <title>Himatif</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('asset_admin/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -46,31 +46,31 @@
             @yield('container')
 
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
+            <footer class="footer text-center"> 2020 &copy; RAP Company.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="asset_admin/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="asset_admin/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('asset_admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- Menu Plugin JavaScript -->
-    <script src="asset_admin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
     <!--slimscroll JavaScript -->
-    <script src="asset_admin/js/jquery.slimscroll.js"></script>
+    <script src="{{ asset('asset_admin/js/jquery.slimscroll.js') }}"></script>
     <!--Wave Effects -->
-    <script src="asset_admin/js/waves.js"></script>
+    <script src="{{ asset('asset_admin/js/waves.js') }}"></script>
     <!--Counter js -->
-    <script src="asset_admin/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-    <script src="asset_admin/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/waypoints/lib/jquery.waypoints.js') }}"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/counterup/jquery.counterup.min.js') }}"></script>
     <!--Morris JavaScript -->
-    <script src="asset_admin/plugins/bower_components/raphael/raphael-min.js"></script>
-    <script src="asset_admin/plugins/bower_components/morrisjs/morris.js"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/raphael/raphael-min.js') }}"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/morrisjs/morris.js') }}"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="asset_admin/js/custom.min.js"></script>
-    <script src="asset_admin/js/dashboard1.js"></script>
-    <script src="asset_admin/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+    <script src="{{ asset('asset_admin/js/custom.min.js') }}"></script>
+    <script src="{{ asset('asset_admin/js/dashboard1.js') }}"></script>
+    <script src="{{ asset('asset_admin/plugins/bower_components/toast-master/js/jquery.toast.js') }}"></script>
     @section('js')
         
     @show

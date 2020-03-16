@@ -1,17 +1,15 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="asset_admin/javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
-                <div class="top-left-part"><a class="logo" href="index.html"><b><img src="asset_admin/plugins/images/pixeladmin-logo.png" alt="home" /></b><b>HIMATIF</b></a></div>
+                <div class="top-left-part"><a class="logo" href="/"><b><img src="{{ asset('asset_admin/plugins/images/logo.png') }}" alt="home" width="37px" /></b><b>HIMATIF</b></a></div>
                 <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
                     <li>
-                        <form method="get" action="/admin" role="search" class="app-search hidden-xs" >
-                            <input type="text" name="search" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
-                        </form>
+                        <h2 style="color: #fff; margin-left: 400px;"><b>HALAMAN ADMINISTRATOR</b></h2>
                     </li>
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
-                        <a class="profile-pic" href="#"> <img src="asset_admin/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
+                        <a class="profile-pic" href="#"> <img src="{{ asset('asset_admin/plugins/images/users/rama.jpg') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">ADMIN</b> </a>
                     </li>
                 </ul>
             </div>
@@ -24,10 +22,10 @@
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
                 <ul class="nav" id="side-menu">
                     <li style="padding: 10px 0 0;">
-                        <a href="/admin" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+                        <a href="/" class="waves-effect" title="Mahasiswa"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Tabel Anggota</span></a>
                     </li>
                     <li>
-                        <a href="/admin_proker" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i><span class="hide-menu">Tabel Proker</span></a>
+                        <a href="/admin_proker" class="waves-effect" title="Proker"><i class="fa fa-table fa-fw" aria-hidden="true"></i><span class="hide-menu">Tabel Proker</span></a>
                     </li>
                 </ul>
                 <div class="center p-20">

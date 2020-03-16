@@ -1,64 +1,107 @@
-<!DOCTYPE HTML>
-<!--
-	Alpha by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Himatif</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Website Himatif</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('asset_user/images/logo.png') }}">
 
-		<link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
-		<link rel="stylesheet" href="{{ asset('asset/css/components.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('asset_user/fonts/icomoon/style.css') }}">
 
-	</head>
-	<body class="landing is-preload">
-		<div id="page-wrapper">
+    <link rel="stylesheet" href="{{ asset('asset_user/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset_user/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset_user/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset_user/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset_user/css/owl.theme.default.min.css') }}">
 
-			@include('layouts.header')
-			
-			<!-- Banner -->
-				<section id="banner">
-					<h2>H I M A T IF</h2>
-					<p>Himpunan Mahasiswa Teknologi Informasi</p>
-				</section>
+    <link rel="stylesheet" href="{{ asset('asset_user/css/jquery.fancybox.min.css') }}">
 
-			@yield('container')
+    <link rel="stylesheet" href="{{ asset('asset_user/css/bootstrap-datepicker.css') }}">
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: R A P</li>
-					</ul>
-				</footer>
+    <link rel="stylesheet" href="{{ asset('asset_user/fonts/flaticon/font/flaticon.css') }}">
 
-		</div>
+    <link rel="stylesheet" href="{{ asset('asset_user/css/aos.css') }}">
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="{{ asset('asset_user/css/styles.css') }}">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
 
-		@section('js')
-		
-		@show
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 
-	</body>
+  <div class="site-wrap"  id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    <div style=" background: url({{ asset('asset_user/images/banner.png') }}); background-size: cover;">
+      
+      @include('layouts.header')
+
+    <div class="site-blocks-cover" style="overflow: hidden;">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+
+            <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+              
+              <img src="{{ asset('asset_user/images/logo.png') }}" alt="Image" class="img-fluid img-absolute" width="300px" style="margin-right: 100px; margin-top: 0px;">
+
+              <div class="row mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-6 mr-auto">
+                  <h1 style="color: #fff;">HIMATIF</h1>
+                  <p class="mb-5" style="color: #fff;">Himpunan mahasiswa teknologi informasi dan komputer<br>Universitas Brawijaya</p>
+                  <div>
+                    <a href="#" class="btn btn-primary mr-2 mb-2" style="background: #1c33b7;">Explore</a>
+                  </div>
+                </div>
+                
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div> 
+     
+    @yield('container')
+     
+
+    @include('layouts.footer')
+    
+
+  <script src="{{ asset('asset_user/js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/jquery-ui.js') }}"></script>
+  <script src="{{ asset('asset_user/js/popper.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/jquery.countdown.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ asset('asset_user/js/aos.js') }}"></script>
+  <script src="{{ asset('asset_user/js/jquery.fancybox.min.js') }}"></script>
+  <script src="{{ asset('asset_user/js/jquery.sticky.js') }}"></script>
+
+  
+  <script src="{{ asset('asset_user/js/main.js') }}"></script>
+  
+    @section('js')
+    
+    @show
+  </body>
 </html>

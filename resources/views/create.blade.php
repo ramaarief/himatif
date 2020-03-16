@@ -37,19 +37,19 @@
 				@csrf
 			  <div class="form-group">
 			    <label for="nim">NIM</label>
-			    <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Anda">
+			    <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Anda" required="">
 			  </div>
 			  <div class="form-group">
 			    <label for="nama">Nama</label>
-			    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anda">
+			    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anda" required="">
 			  </div>
 			  <div class="form-group">
 			    <label for="tahun">Tahun Angkatan</label>
-			    <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Masukkan Tahun Angkatan Anda">
+			    <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Masukkan Tahun Angkatan Anda" required="">
 			  </div>
 			  <div class="form-group">
 			    <label for="alamat">Alamat</label>
-			    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat Anda">
+			    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat Anda" required="">
 			  </div>
 			  <div class="form-group">
 			    <img src="http://placehold.it/100x100" id="showgambar" style="max-width:200px;max-height:200px;float:left;" />
@@ -63,7 +63,7 @@
 
 			  <div class="form-group">
 			    <label for="photo">Upload Photo</label><br>
-			    <input type="file" id="inputgambar" name="photo">
+			    <input type="file" id="inputgambar" name="photo" required="">
 			  </div>
 			  <button type="submit" class="btn btn-primary" style="color: #fff;">Tambah Data</button>
 			</form>

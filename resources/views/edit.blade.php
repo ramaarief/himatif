@@ -28,7 +28,7 @@
 	<section id="main" class="container">
 
 		<section class="box">
-			<header class="major">
+			<header class="major" style="margin-top: 50px;">
 				<h2>Edit Data Anggota Himatif</h2>
 				<p>Tahun periode 2019/2020</p>
 			</header>

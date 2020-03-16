@@ -37,7 +37,8 @@
 											@endforeach
 										</td>
 										<td>
-											<form action="/proker/{{ $p->id }}" method="post" class="d-inline">
+                                            <a href="/edit_proker/{{ $p->id }}" class="btn btn-primary" style="color: #fff; width: 67px;">Edit</a>
+											<form action="/admin_proker/{{ $p->id }}" method="post" class="d-inline">
 												@method('delete')
 												@csrf
 											<button type="submit" class="btn btn-danger">Delete</button>
