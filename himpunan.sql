@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Feb 2020 pada 20.43
+-- Waktu pembuatan: 16 Mar 2020 pada 10.17
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -21,32 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `himpunan`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `anggota`
---
-
-CREATE TABLE `anggota` (
-  `id` int(2) NOT NULL,
-  `NIM` int(16) NOT NULL,
-  `Nama` varchar(50) NOT NULL,
-  `Tahun_Angkatan` int(4) NOT NULL,
-  `Alamat` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `anggota`
---
-
-INSERT INTO `anggota` (`id`, `NIM`, `Nama`, `Tahun_Angkatan`, `Alamat`) VALUES
-(1, 1831, 'Budi Susanto Fari', 2016, 'Medan'),
-(2, 1832, 'Soni Goviono D', 2018, 'Surabaya'),
-(3, 1833, 'Sini De Andre', 2017, 'Bogor'),
-(4, 1834, 'Santi Santika', 2019, 'Malang'),
-(5, 1835, 'Reza Bahardian', 2018, 'Semarang'),
-(6, 1836, 'Rama Arief Permana', 2018, 'Banyuwangi');
 
 -- --------------------------------------------------------
 
@@ -70,11 +44,14 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `NIM`, `Nama`, `Tahun_Angkatan`, `Alamat`, `Photo`, `created_at`, `updated_at`) VALUES
-(1, '183140714111036', 'Rama Arief Permana', '2016', 'Banyuwangi', 'member6.png', NULL, NULL),
-(2, '183140714111031', 'Budi Susanto Fari', '2018', 'Surabaya', 'member4.png', '2020-02-08 18:02:52', NULL),
-(3, '183140714111032', 'Susi Susanti', '2018', 'Bogor', 'member3.png', NULL, NULL),
-(4, '183140714111033', 'Hanin Fairuz', '2017', 'Cibinong', 'member2.png', NULL, NULL),
-(5, '183140714111034', 'Bruno Fernandez Muroil', '2018', 'Papua', 'member5.png', NULL, NULL);
+(1, '183140714111036', 'Rama Arief Permana', '2018', 'Banyuwangi', 'products-20200316055456.png', NULL, NULL),
+(2, '183140714111031', 'Budi Susanto Fari', '2020', 'Surabaya', 'products-20200316055654.png', '2020-02-08 18:02:52', NULL),
+(3, '183140714111032', 'Susi Susanti', '2019', 'Bogor', 'products-20200316055718.png', NULL, NULL),
+(4, '183140714111033', 'Hanin Fairuz', '2019', 'Cibinong', 'products-20200316055751.png', NULL, NULL),
+(5, '183140714111034', 'Bruno Fernandez Muroil', '2020', 'Bandung', 'member5.png', NULL, NULL),
+(6, '183140714111001', 'Safairuz Fauzah', '2018', 'Padang', 'products-20200316055820.png', NULL, NULL),
+(7, '183140714111002', 'Budi Doremi', '2019', 'Bogor', 'products-20200211031400.png', NULL, NULL),
+(8, '183140714111003', 'Salsabila Hanan', '2018', 'Banyuwangi', 'products-20200316055839.png', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -99,7 +76,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2014_10_12_100000_create_password_resets_table', 2),
 (13, '2020_02_07_014303_create_member_table', 2),
 (14, '2020_02_08_093349_create_psdm_table', 3),
-(17, '2020_02_08_174055_create_proker_table', 4);
+(20, '2020_02_08_174055_create_proker_table', 4);
 
 -- --------------------------------------------------------
 
@@ -124,7 +101,7 @@ CREATE TABLE `proker` (
   `Proker` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Tanggal_Pelaksanaan` date NOT NULL,
   `Tempat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Kapel` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kapel_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -133,12 +110,12 @@ CREATE TABLE `proker` (
 -- Dumping data untuk tabel `proker`
 --
 
-INSERT INTO `proker` (`id`, `Proker`, `Tanggal_Pelaksanaan`, `Tempat`, `Kapel`, `created_at`, `updated_at`) VALUES
-(1, 'First Gathering Maba TI', '2019-09-18', 'Ayam Goreng Cak Per', 'Rama Arief Permana', '2020-02-08 19:40:39', NULL),
-(2, 'Bakti Sosial Himatif', '2020-01-28', 'Pasar Besar ', 'Budi Susanto Fari', '2020-02-08 19:40:39', NULL),
-(3, 'Sambut Wisuda TI', '2019-11-14', 'Gor Pertamina', 'Susi Susanti', '2020-02-08 19:40:39', NULL),
-(4, 'Fun Futsal TI', '2020-02-02', 'SM Futsal Malang', 'Hanin Fairuz', '2020-02-08 19:40:39', NULL),
-(5, 'Makrab TI 2019', '2019-11-05', 'Villa Batu', 'Bruno Fernandez Muroil', '2020-02-08 19:40:39', NULL);
+INSERT INTO `proker` (`id`, `Proker`, `Tanggal_Pelaksanaan`, `Tempat`, `kapel_id`, `created_at`, `updated_at`) VALUES
+(1, 'First Gathering Maba TI', '2019-09-19', 'Ayam Goreng Cak Nan', 1, '2020-02-19 00:03:35', NULL),
+(2, 'Makrab TI (LIMIT 3.0)', '2020-01-28', 'Villa Batu', 2, '2020-02-19 00:03:35', NULL),
+(3, 'First Gathering Staff Muda', '2019-11-14', 'Lobbi Biro Lantai 1 Vokasi UB', 5, '2020-02-19 00:03:35', NULL),
+(4, 'Regenerasi Himpunan TI', '2020-02-02', 'R.309 - 310 Vokasi UB', 4, '2020-02-19 00:03:35', NULL),
+(5, 'Sertijab TI', '2019-11-05', 'R.309 - 310 Vokasi UB', 3, '2020-02-19 00:03:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,14 +135,15 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Dumping data untuk tabel `users`
 --
 
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Rama', 'rama@gmail.com', NULL, '$2y$10$ayx6fHM1VeuiV7FdtTpCcO814jtIe08tndDCNQ11WeforuBRMUYDq', NULL, '2020-02-18 07:23:20', '2020-02-18 07:23:20');
+
 --
--- Indeks untuk tabel `anggota`
+-- Indexes for dumped tables
 --
-ALTER TABLE `anggota`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `member`
@@ -189,7 +167,8 @@ ALTER TABLE `password_resets`
 -- Indeks untuk tabel `proker`
 --
 ALTER TABLE `proker`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `proker_kapel_id_foreign` (`kapel_id`);
 
 --
 -- Indeks untuk tabel `users`
@@ -203,22 +182,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `anggota`
---
-ALTER TABLE `anggota`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `proker`
@@ -230,7 +203,7 @@ ALTER TABLE `proker`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -240,7 +213,7 @@ ALTER TABLE `users`
 -- Ketidakleluasaan untuk tabel `proker`
 --
 ALTER TABLE `proker`
-  ADD CONSTRAINT `proker_id_foreign` FOREIGN KEY (`id`) REFERENCES `member` (`id`);
+  ADD CONSTRAINT `proker_kapel_id_foreign` FOREIGN KEY (`kapel_id`) REFERENCES `member` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
