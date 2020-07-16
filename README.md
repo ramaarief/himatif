@@ -8,4 +8,8 @@
     <p align="center">Halaman Data Anggota Himatif</p>
     <p align="center"><img src="https://raw.githubusercontent.com/ramaarief/tutorial_caker/master/Capture9.PNG"></p>
 	<p align="center">Halaman Data Proker Himatif dalam satu periode</p>
+    <p align="center"><img src="https://raw.githubusercontent.com/ramaarief/tutorial_caker/master/Tambah.PNG"></p>
+	<p align="center">Halaman untuk menambah data anggota himpunan</p>
+    <p align="center"><img src="https://raw.githubusercontent.com/ramaarief/tutorial_caker/master/edit.PNG"></p>
+	<p align="center">Halaman untuk mengedit data anggota himpunan</p>
 	</ul>
